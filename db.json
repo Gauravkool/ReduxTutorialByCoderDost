@@ -1,11 +1,22 @@
 {
-    "accounts": [
-      { "id": 1, "amount": 100 },
-      { "id": 2, "amount": 200 }
-    ],
-    "bonus": [
-      { "id": 1, "points": 2 },
-      { "id": 2, "points": 3 }
-    ]
-  }
-  
+  "accounts": [
+    {
+      "id": 1,
+      "amount": 101
+    },
+    {
+      "id": 2,
+      "amount": 121
+    }
+  ],
+  "bonus": [
+    {
+      "id": 1,
+      "points": 2
+    },
+    {
+      "id": 2,
+      "points": 3
+    }
+  ]
+}
