@@ -1,5 +1,6 @@
+
 import { useDispatch, useSelector } from "react-redux";
-import { incrementBonus } from "../actions";
+import { increment } from "../slices/bonusSlice";
 
 function Bonus() {
   const amount = useSelector((state) => state.account.amount);
@@ -14,7 +15,7 @@ function Bonus() {
         <h3>Total Amount : ${amount}</h3>
         <h3>Total Point : ${points}</h3>
 
-        <button onClick={() => dispatch(incrementBonus())}>Increment +</button>
+        <button onClick={() => dispatch(increment())}>Increment +</button>
       </div>
     </div>
   );
