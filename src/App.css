@@ -21,7 +21,14 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
 }
-
+.App > button {
+  background-color: rgb(37, 35, 35);
+  padding: 10rem, 20rem;
+  color: white;
+  margin: 10px;
+  border-radius: 10px;
+  font-size: medium;
+}
 .App-link {
   color: rgb(112, 76, 182);
 }
