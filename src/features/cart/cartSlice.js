@@ -1,5 +1,4 @@
-import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addItem, deleteItem, fetchItems, updateItem } from "./cartAPI";
+import { createAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   items: [],
@@ -14,34 +13,6 @@ export const deleteAsync = createAction("cart/deleteItem/pending");
 export const deleteAsyncFulfilled = createAction("cart/deleteItem/fulfilled");
 export const updateAsync = createAction("cart/updateItem/pending");
 export const updateAsyncFulfilled = createAction("cart/updateItem/fulfilled");
-
-
-
-// export const addAsync = createAsyncThunk("cart/addItem", async (item) => {
-//   const { id, title, thumbnail, brand, price } = item;
-//   const response = await addItem({
-//     id,
-//     title,
-//     thumbnail,
-//     brand,
-//     price,
-//     quantity: 1,
-//   });
-//   return response.data;
-// });
-
-// export const deleteAsync = createAsyncThunk("cart/deleteItem", async (id) => {
-//   await deleteItem(id);
-//   return id;
-// });
-
-// export const updateAsync = createAsyncThunk(
-//   "cart/updateItem",
-//   async ({ id, update }) => {
-//     const response = await updateItem(id, update);
-//     return response.data;
-//   }
-// );
 
 export const cartSlice = createSlice({
   name: "cart",
@@ -78,7 +49,5 @@ export const cartSlice = createSlice({
       });
   },
 });
-
-// export const {  } = productsSlice.actions;
 
 export default cartSlice.reducer;
