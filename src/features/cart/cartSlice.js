@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { addItem, deleteItem, fetchItems, updateItem } from "./cartAPI";
 
 const initialState = {
@@ -6,36 +6,42 @@ const initialState = {
   status: "idle",
 };
 
-export const fetchAsync = createAsyncThunk("cart/fetchItems", async () => {
-  const response = await fetchItems();
-  return response.data;
-});
+export const fetchAsync = createAction("cart/fetchItems/pending");
+export const fetchAsyncFulfilled = createAction("cart/fetchItems/fulfilled");
+export const addAsync = createAction("cart/addItem/pending");
+export const addAsyncFulfilled = createAction("cart/addItem/fulfilled");
+export const deleteAsync = createAction("cart/deleteItem/pending");
+export const deleteAsyncFulfilled = createAction("cart/deleteItem/fulfilled");
+export const updateAsync = createAction("cart/updateItem/pending");
+export const updateAsyncFulfilled = createAction("cart/updateItem/fulfilled");
 
-export const addAsync = createAsyncThunk("cart/addItem", async (item) => {
-  const { id, title, thumbnail, brand, price } = item;
-  const response = await addItem({
-    id,
-    title,
-    thumbnail,
-    brand,
-    price,
-    quantity: 1,
-  });
-  return response.data;
-});
 
-export const deleteAsync = createAsyncThunk("cart/deleteItem", async (id) => {
-  await deleteItem(id);
-  return id;
-});
 
-export const updateAsync = createAsyncThunk(
-  "cart/updateItem",
-  async ({ id, update }) => {
-    const response = await updateItem(id, update);
-    return response.data;
-  }
-);
+// export const addAsync = createAsyncThunk("cart/addItem", async (item) => {
+//   const { id, title, thumbnail, brand, price } = item;
+//   const response = await addItem({
+//     id,
+//     title,
+//     thumbnail,
+//     brand,
+//     price,
+//     quantity: 1,
+//   });
+//   return response.data;
+// });
+
+// export const deleteAsync = createAsyncThunk("cart/deleteItem", async (id) => {
+//   await deleteItem(id);
+//   return id;
+// });
+
+// export const updateAsync = createAsyncThunk(
+//   "cart/updateItem",
+//   async ({ id, update }) => {
+//     const response = await updateItem(id, update);
+//     return response.data;
+//   }
+// );
 
 export const cartSlice = createSlice({
   name: "cart",
@@ -45,25 +51,25 @@ export const cartSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(fetchAsync.pending, (state) => {
+      .addCase(fetchAsync, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchAsync.fulfilled, (state, action) => {
+      .addCase(fetchAsyncFulfilled, (state, action) => {
         state.status = "idle";
         state.items = action.payload;
       })
-      .addCase(addAsync.fulfilled, (state, action) => {
+      .addCase(addAsyncFulfilled, (state, action) => {
         state.status = "idle";
         state.items.push(action.payload);
       })
-      .addCase(deleteAsync.fulfilled, (state, action) => {
+      .addCase(deleteAsyncFulfilled, (state, action) => {
         state.status = "idle";
         const index = state.items.findIndex(
           (item) => item.id === action.payload
         );
         state.items.splice(index, 1);
       })
-      .addCase(updateAsync.fulfilled, (state, action) => {
+      .addCase(updateAsyncFulfilled, (state, action) => {
         state.status = "idle";
         const index = state.items.findIndex(
           (item) => item.id === action.payload.id

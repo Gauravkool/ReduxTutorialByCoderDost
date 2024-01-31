@@ -555,27 +555,19 @@
   ],
   "cart": [
     {
-      "id": "1",
-      "title": "iPhone 9",
-      "thumbnail": "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
-      "brand": "Apple",
-      "price": 549,
-      "quantity": 3
-    },
-    {
       "id": "2",
       "title": "iPhone X",
       "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
       "brand": "Apple",
       "price": 899,
-      "quantity": 2
+      "quantity": 3
     },
     {
-      "id": "6",
-      "title": "MacBook Pro",
-      "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
-      "brand": "Apple",
-      "price": 1749,
+      "id": "9",
+      "title": "Infinix INBOOK",
+      "thumbnail": "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
+      "brand": "Infinix",
+      "price": 1099,
       "quantity": 2
     }
   ]
